@@ -1,4 +1,4 @@
-# MCQ App
+# MCQ Mcq
 Mern stack app
 
 ### Back-end:

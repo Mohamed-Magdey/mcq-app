@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = Promise;
 
-const DB_URI = process.env.DB || 'mongodb://localhost/mcq';
+const DB_URI = process.env.DATABASE_URL || 'mongodb://localhost/mcq';
 
 mongoose.connect(DB_URI, {
     useNewUrlParser: true,

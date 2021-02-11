@@ -10,4 +10,4 @@ mongoose.connect(DB_URI, {
     useCreateIndex: true
 });
 
-module.exports.Question = require('./Question');
+module.exports.Question = require('./question');

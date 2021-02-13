@@ -1,0 +1,8 @@
+.ui.inverted.dimmer {
+    background-color: rgba(255,255,255,1) !important;
+}
+
+.ui.card>.content>.header,
+.ui.cards>.card>.content>.header {
+    color: #fff !important;
+}

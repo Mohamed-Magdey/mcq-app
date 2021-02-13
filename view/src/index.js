@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import './index.css';
-import Mcq from './Mcq';
+import Mcq from './containers/Mcq';
 import reportWebVitals from './reportWebVitals';
 import {configureStore} from "./store";
 import 'semantic-ui-css/semantic.min.css'

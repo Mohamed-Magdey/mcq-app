@@ -84,6 +84,7 @@ class Test extends React.Component {
                             {this.state.answer && <Modal
                                 size='tiny'
                                 dimmer='inverted'
+                                closeOnDimmerClick={false}
                                 trigger={<Button color='teal'
                                                  size='medium'
                                                  onClick={this.handleNext}
@@ -93,6 +94,9 @@ class Test extends React.Component {
                                 <Modal.Content>
                                     <p>{text}! Your score is: {text === 'Correct' ? '+2' : '0'}</p>
                                 </Modal.Content>
+                                <Modal.Actions>
+                                    <Button onClick={() => this.setState({answer: ''})}>OK</Button>
+                                </Modal.Actions>
                             </Modal>}
                         </Form>
                     </Segment>

@@ -81,7 +81,7 @@ class Test extends React.Component {
                                 </Segment>
                             ))}
                             </Segment.Group>
-                            <Modal
+                            {this.state.answer && <Modal
                                 size='tiny'
                                 dimmer='inverted'
                                 trigger={<Button color='teal'
@@ -93,7 +93,7 @@ class Test extends React.Component {
                                 <Modal.Content>
                                     <p>{text}! Your score is: {text === 'Correct' ? '+2' : '0'}</p>
                                 </Modal.Content>
-                            </Modal>
+                            </Modal>}
                         </Form>
                     </Segment>
                 </Container>

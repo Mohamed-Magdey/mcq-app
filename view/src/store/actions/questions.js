@@ -19,7 +19,7 @@ function apiCall(method, path, data) {
 
 export default function fetchQuestions() {
     return dispatch => {
-        return apiCall("get", 'http://localhost:8080/')
+        return apiCall("get", '/')
             .then(res => dispatch(loadQuestions(res)))
             .catch(err => console.log("Error: " + err));
     }

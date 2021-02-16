@@ -3,7 +3,7 @@ import {Card, Grid} from "semantic-ui-react";
 
 const End = ({user}) => (
     <Grid textAlign='center' style={{ height: '70vh' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column>
         <Card>
             <Card.Content header={user.name} style={{background: '#009c95'}}/>
             <Card.Content>

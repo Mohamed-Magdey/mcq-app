@@ -3,6 +3,7 @@ import {Button, Container, Form, Header, Radio, Modal, Segment} from "semantic-u
 import {connect} from "react-redux";
 import {increment} from "../store/actions/user";
 import End from '../components/End';
+import {removeAnswer} from '../store/actions/questions';
 
 class Test extends React.Component {
     constructor(props) {
@@ -11,7 +12,11 @@ class Test extends React.Component {
             index: 0,
             answer: '',
             isSubmitted: false,
-            text: ''
+            text: {
+                type: '',
+                num: 0
+            },
+            count: 1
         }
     }
 
@@ -21,24 +26,46 @@ class Test extends React.Component {
 
     handleNext = (e) => {
         const {questions} = this.props;
-        const {index, answer, isSubmitted} = this.state;
-        let str = 'Wrong';
+        const {index, answer, isSubmitted, count} = this.state;
+        let str = {type: 'Wrong', num: 0};
 
         if(e.target.innerText === 'Next') {
             if(answer === questions[index].correct) {
-                this.props.increment(this.props.user.score + 2);
-                str = 'Correct'
+                if(count === 1) {
+                    this.props.increment(this.props.user.score + 2);
+                    str.num = 2;
+                } else {
+                    this.props.increment(this.props.user.score + 1);
+                    str.num = 1;
+                }
+                str.type = 'Correct'
             }
-            this.setState({index: this.state.index + 1, text: str})
+            if(str.type === 'Wrong' && count === 1) {
+                this.props.removeAnswer(index, answer);
+                this.setState({text: str, count: count - 1})
+            } else {
+                this.setState({index: index + 1, text: str, count: 1})
+            }
         }
 
         if(e.target.innerText === 'Submit') {
             e.preventDefault();
             if(answer === questions[index].correct) {
-                this.props.increment(this.props.user.score + 2);
-                str = 'Correct'
+                if(count === 1) {
+                    this.props.increment(this.props.user.score + 2);
+                    str.type = 2;
+                } else {
+                    this.props.increment(this.props.user.score + 1);
+                    str.num = 1;
+                }
+                str.type = 'Correct'
             }
-            this.setState({isSubmitted: !isSubmitted, text: str})
+            if(str.type === 'Wrong' && count === 1) {
+                this.props.removeAnswer(index, answer);
+                this.setState({text: str, count: count - 1})
+            } else {
+                this.setState({isSubmitted: !isSubmitted, text: str,  count: 1})
+            }
         }
 
     };
@@ -46,6 +73,7 @@ class Test extends React.Component {
     render() {
         const {user, questions} = this.props;
         const {index, isSubmitted, answer, text} = this.state;
+
         let style = {
             h1: {
                 backgroundColor: '#009c95',
@@ -92,7 +120,7 @@ class Test extends React.Component {
                                 />}
                             >
                                 <Modal.Content>
-                                    <p>{text}! Your score is: {text === 'Correct' ? '+2' : '0'}</p>
+                                    <p>{text.type}! Your score is: {text.type === 'Correct'? '+' : ''}{text.num}</p>
                                 </Modal.Content>
                                 <Modal.Actions>
                                     <Button onClick={() => this.setState({answer: ''})}>OK</Button>
@@ -109,8 +137,8 @@ class Test extends React.Component {
 function mapStateToProps(state) {
     return {
         questions: state.questions,
-        user: state.user,
+        user: state.user
     }
 }
 
-export default connect(mapStateToProps,{increment})(Test);
+export default connect(mapStateToProps,{increment, removeAnswer})(Test);

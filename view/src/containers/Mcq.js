@@ -32,9 +32,8 @@ class Mcq extends React.Component{
     };
 
   render() {
-      const {questions} = this.props;
       if(this.state.isSubmitted) {
-          return <Test questions={questions} />
+          return <Test/>
       }
       return (
           <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -60,10 +59,4 @@ class Mcq extends React.Component{
 }
 
 
-function mapStateToProps(state) {
-  return {
-    questions: state.questions
-  }
-}
-
-export default connect(mapStateToProps,{fetchQuestions, newUser})(Mcq);
+export default connect(null ,{fetchQuestions, newUser})(Mcq);

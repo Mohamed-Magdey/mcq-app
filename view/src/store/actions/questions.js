@@ -5,6 +5,12 @@ export const loadQuestions = questions => ({
     questions
 });
 
+export const removeAnswer = (index, val) => ({
+    type: "REMOVE_ANSWER",
+    index,
+    val
+})
+
 function apiCall(method, path, data) {
     return new Promise((resolve, reject) => {
         return axios[method](path, data)

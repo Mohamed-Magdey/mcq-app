@@ -5,21 +5,6 @@ import {increment} from "../store/actions/user";
 import End from '../components/End';
 import {removeAnswer} from '../store/actions/questions';
 
-
-function getRandom(arr, n) {
-    let result = new Array(n),
-        len = arr.length,
-        taken = new Array(len);
-    if (n > len)
-        throw new RangeError("getRandom: more elements taken than available");
-    while (n--) {
-        let x = Math.floor(Math.random() * len);
-        result[n] = arr[x in taken ? taken[x] : x];
-        taken[x] = --len in taken ? taken[len] : len;
-    }
-    return result;
-}
-
 class Test extends React.Component {
     constructor(props) {
         super(props);
@@ -88,7 +73,7 @@ class Test extends React.Component {
     render() {
         const {user, questions} = this.props;
         const {index, isSubmitted, answer, text} = this.state;
-        const shuffleAnswer =  getRandom(questions[index].answers, 4);
+
         let style = {
             h1: {
                 backgroundColor: '#009c95',
@@ -110,7 +95,7 @@ class Test extends React.Component {
                                 <b>Q{index}:</b> {questions[index].question}
                             </Form.Field>
                             <Segment.Group>
-                            {shuffleAnswer.map((val, i) => (
+                            {questions[index].answers.map((val, i) => (
                                 <Segment key={i}>
                                     <Form.Field>
                                         <Radio

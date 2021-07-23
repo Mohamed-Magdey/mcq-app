@@ -12,7 +12,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.use('/', questionRoutes);
+app.use('/api', questionRoutes);
 
 app.use((req, res, next) => {
     let err = new Error("Not Found");

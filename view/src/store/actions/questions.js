@@ -25,7 +25,7 @@ function apiCall(method, path, data) {
 
 export default function fetchQuestions() {
     return dispatch => {
-        return apiCall("get", 'https://mcq-server.herokuapp.com/')
+        return apiCall("get", process.env.REACT_APP_URL_API)
             .then(res => dispatch(loadQuestions(res)))
             .catch(err => console.log("Error: " + err));
     }

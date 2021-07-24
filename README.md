@@ -1,8 +1,8 @@
-# MCQ Mcq
-Mern stack app
+# Introduction
+It's A multiple-choice question (MCQ) Mern stack app
 
 ## Front-End:
-Live: https://mcq-fronted.herokuapp.com/
+Live: https://mcq-mern-app.herokuapp.com/
 
 ## Back-End:
-Live: https://mcq-server.herokuapp.com/
+Live: https://mcq-mern-app.herokuapp.com/api

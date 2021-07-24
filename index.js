@@ -19,6 +19,7 @@ app.use(
           scriptSrc: ["'self'", 'https://mcq-mern-app.herokuapp.com/api'],
           styleSrc: [
             "'self'",
+            "'unsafe-inline'",
             'https://fonts.googleapis.com'
             ],
           fontSrc: ["'self'", ' data: https://fonts.gstatic.com'],

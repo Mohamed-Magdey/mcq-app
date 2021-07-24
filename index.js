@@ -19,9 +19,9 @@ app.use(
           scriptSrc: ["'self'", 'https://mcq-mern-app.herokuapp.com/api'],
           styleSrc: [
             "'self'",
-            'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin',
-          ],
-          fontSrc: ["'self'", 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin'],
+            'https://fonts.googleapis.com'
+            ],
+          fontSrc: ["'self'", 'https://fonts.googleapis.com'],
           baseUri: ["'self'"],
         },
       })

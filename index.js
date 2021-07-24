@@ -9,7 +9,22 @@ const path                               = require('path'),
 
 const PORT = process.env.PORT || 8080;
 
-app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+          defaultSrc: ["'self'"],
+          connectSrc: ["'self'", 'https://mcq-mern-app.herokuapp.com/api'],
+          frameSrc: ["'self'", 'https://mcq-mern-app.herokuapp.com/api'],
+          childSrc: ["'self'", 'https://mcq-mern-app.herokuapp.com/api'],
+          scriptSrc: ["'self'", 'https://mcq-mern-app.herokuapp.com/api'],
+          styleSrc: [
+            "'self'",
+            'https://mcq-mern-app.herokuapp.com/api',
+          ],
+          baseUri: ["'self'"],
+        },
+      })
+);
 app.use(cors());
 app.use(express.json());
 
